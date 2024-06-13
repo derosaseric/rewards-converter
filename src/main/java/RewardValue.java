@@ -1,18 +1,18 @@
 public class RewardValue {
     private double cashValue;
-    private double mileValue;
-    private static final double MILES_TO_CASH_RATE = 0.0035;
+    private int mileValue;
+    public static final double MILES_TO_CASH_RATE = 0.0035;
 
     // Constructor that accepts cash value
     public RewardValue(double cashValue) {
         this.cashValue = roundToTwoDecimals(cashValue);
-        this.mileValue = roundToTwoDecimals(cashValue / MILES_TO_CASH_RATE);
+        this.mileValue = (int)(Math.round(cashValue / MILES_TO_CASH_RATE));
     }
 
     // Constructor that accepts mile value
     public RewardValue(int mileValue) {
-        this.mileValue = roundToTwoDecimals(mileValue);
-        this.cashValue = roundToTwoDecimals(mileValue * MILES_TO_CASH_RATE);
+        this.mileValue = mileValue;
+        this.cashValue = roundToTwoDecimals((double)mileValue * MILES_TO_CASH_RATE);
     }
 
     // Method to get the cash value
